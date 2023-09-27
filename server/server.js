@@ -20,7 +20,7 @@
     });
     
     app.use(cors({
-        origin: "http://localhost:3000",
+        origin: "https://todo-list-frontend-k85k.onrender.com/",
         credentials: true,
     }));
 
