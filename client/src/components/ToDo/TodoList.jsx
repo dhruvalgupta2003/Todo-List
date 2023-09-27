@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import server from '../../server'
 
 function TodoList({ user }) {
   const [tasks, setTasks] = useState([]);
@@ -17,7 +18,7 @@ function TodoList({ user }) {
   const fetchTasks = async () => {
     try {
       // Fetch tasks using your API endpoint (e.g., GET /api/tasks)
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      const response = await fetch(`${server}/api/tasks`, {
         headers: {
           'auth-token': localStorage.getItem('auth-token'), // Retrieve token from local storage
         },
@@ -38,7 +39,7 @@ function TodoList({ user }) {
   const createTask = async () => {
     try {
       // Send a POST request to create a task using your API endpoint (e.g., POST /api/tasks)
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      const response = await fetch(`${server}/api/tasks`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ function TodoList({ user }) {
   const updateTask = async () => {
     try {
       // Send a PUT request to update a task using your API endpoint (e.g., PUT /api/tasks/:id)
-      const response = await fetch(`http://localhost:5000/api/tasks/${editTask.id}`, {
+      const response = await fetch(`${server}/api/tasks/${editTask.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +88,7 @@ function TodoList({ user }) {
   const deleteTask = async (taskId) => {
     try {
       // Send a DELETE request to delete a task using your API endpoint (e.g., DELETE /api/tasks/:id)
-      const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+      const response = await fetch(`${server}/api/tasks/${taskId}`, {
         method: 'DELETE',
         headers: {
           'auth-token': localStorage.getItem('auth-token'), // Retrieve token from local storage
