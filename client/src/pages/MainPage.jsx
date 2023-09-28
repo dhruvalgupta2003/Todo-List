@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MainPage = () => {
     const navigate = useNavigate();
     function handleStart(){
-        navigate('/login');
+        navigate('/register');
     }
   return (
     <div>
